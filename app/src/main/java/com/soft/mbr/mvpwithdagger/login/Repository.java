@@ -1,10 +1,10 @@
-package com.soft.mbr.mvpwithdagger;
+package com.soft.mbr.mvpwithdagger.login;
 
 /**
  * Created by mbrzeczek on 29.01.2018.
  */
 
-public interface LoginRepository {
+public interface Repository {
     User getUser();
 
     void saveUser(User user);

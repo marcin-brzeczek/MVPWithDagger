@@ -2,20 +2,49 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.soft.mbr.mvpwithdagger">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
-        android:name="com.soft.mbr.mvpwithdagger.App"
+        android:name=".root.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.soft.mbr.mvpwithdagger.LoginActivity">
+        <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".games.GameListActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".menu.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.soft.mbr.mvpwithdagger.menu.MenuActivity"/>
+        </activity>
+        <activity
+            android:name=".movies.MovieListActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".menu.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.soft.mbr.mvpwithdagger.menu.MenuActivity"/>
+        </activity>
+        <activity
+            android:name=".menu.MenuActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".login.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.soft.mbr.mvpwithdagger.login.LoginActivity"/>
         </activity>
     </application>
 

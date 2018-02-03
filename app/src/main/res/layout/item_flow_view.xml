@@ -1,0 +1,53 @@
+<!--android:background="@color/grey1"-->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="120dp"
+
+
+    >
+
+    <ImageView
+        android:id="@+id/imgPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/txtClicked"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/background_flow_menu_card"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/txtTitile"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="top"
+        android:alpha="1.0"
+        android:gravity="top|center_vertical"
+        android:text="Tekst"
+        android:textAlignment="center"
+        android:textSize="18dp"/>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_above="@+id/txtTitile"
+        android:layout_centerHorizontal="true"
+
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:alpha="1.0"
+        android:src="@drawable/games"
+       />
+
+</RelativeLayout>
+

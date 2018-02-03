@@ -1,4 +1,6 @@
-package com.soft.mbr.mvpwithdagger;
+package com.soft.mbr.mvpwithdagger.login;
+
+import android.content.Context;
 
 /**
  * Created by mbrzeczek on 29.01.2018.
@@ -17,6 +19,7 @@ public interface LoginActivityMVP {
         void  showUserSavedMessage();
         void setFirstName(String firstName);
         void setLastName(String lastName);
+        Context getCurrentContext();
 
     }
 
@@ -25,6 +28,7 @@ public interface LoginActivityMVP {
         void setView(LoginActivityMVP.View view);
         void loginButtonClicked();
         void getCurrentUser();
+        void saveUser();
     }
 
     interface  Model{

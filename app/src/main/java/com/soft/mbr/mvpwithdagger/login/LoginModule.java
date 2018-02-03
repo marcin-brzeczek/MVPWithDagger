@@ -1,4 +1,4 @@
-package com.soft.mbr.mvpwithdagger;
+package com.soft.mbr.mvpwithdagger.login;
 
 import dagger.Module;
 import dagger.Provides;
@@ -16,12 +16,12 @@ public class LoginModule {
     }
 
     @Provides
-    public LoginActivityMVP.Model provideLoginActivityModel(LoginRepository repository){
+    public LoginActivityMVP.Model provideLoginActivityModel(Repository repository){
         return  new LoginModel(repository);
     }
 
     @Provides
-    public  LoginRepository provideLoginRepository(){
-        return new MemoryRepository();
+    public Repository provideLoginRepository(){
+        return new LoginRepository();
     }
 }

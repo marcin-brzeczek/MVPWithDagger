@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/menuView"
+    android:background="@color/blue400"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:coverflow="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.soft.mbr.mvpwithdagger.menu.MenuActivity"
+    tools:showIn="@layout/activity_menu">
+
+
+    <it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow
+        android:id="@+id/coverflow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        coverflow:coverWidth="100dp"
+        coverflow:coverHeight="120dp"
+        coverflow:maxScaleFactor="1.4"
+        coverflow:reflectionGap="30dp"
+        coverflow:rotationThreshold="0.6"
+        coverflow:scalingThreshold="0.5"
+        />
+
+
+</RelativeLayout>

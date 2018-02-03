@@ -1,0 +1,63 @@
+package com.soft.mbr.mvpwithdagger.http;
+
+import java.io.IOException;
+
+import dagger.Module;
+import dagger.Provides;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+/**
+ * Created by mbrzeczek on 02.02.2018.
+ */
+@Module
+public class ApiModuleForMovieName {
+
+    public final String BASE_URL ="http://api.themoviedb.org/3/movie/";
+    public final String API_KEY ="82ac31317d116f123d8f4c9be04a14b9";
+
+
+    @Provides
+    public OkHttpClient provideClient() {
+
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+
+        return new OkHttpClient.Builder().addInterceptor(interceptor).addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException
+            {
+                Request request = chain.request();
+                HttpUrl url = request.url().newBuilder().addQueryParameter(
+                        "api_key",
+                        API_KEY
+                ).build();
+                request = request.newBuilder().url(url).build();
+                return chain.proceed(request);
+            }
+        }).build();
+    }
+
+    @Provides
+    public Retrofit provideRetrofit(String baseUrl, OkHttpClient client){
+        return  new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+    }
+
+    @Provides
+    public MovieApiService provideApiService(){
+        return  provideRetrofit(BASE_URL, provideClient()).create(MovieApiService.class);
+    }
+}
+

@@ -1,4 +1,4 @@
-package com.soft.mbr.mvpwithdagger;
+package com.soft.mbr.mvpwithdagger.login;
 
 /**
  * Created by mbrzeczek on 29.01.2018.
@@ -7,9 +7,9 @@ package com.soft.mbr.mvpwithdagger;
 public class LoginModel implements LoginActivityMVP.Model {
 
 
-    private LoginRepository repository;
+    private Repository repository;
 
-    public LoginModel(LoginRepository repository)
+    public LoginModel(Repository repository)
     {
         this.repository = repository;
     }

@@ -1,11 +1,16 @@
-package com.soft.mbr.mvpwithdagger;
+package com.soft.mbr.mvpwithdagger.login;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.soft.mbr.mvpwithdagger.R;
+import com.soft.mbr.mvpwithdagger.root.BaseActivity;
+import com.soft.mbr.mvpwithdagger.root.LoginActivityComponent;
+import com.soft.mbr.mvpwithdagger.root.di.activity.HasActivitySubcomponentBuilders;
 
 import javax.inject.Inject;
 
@@ -13,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements LoginActivityMVP.View {
+public class LoginActivity extends BaseActivity implements LoginActivityMVP.View {
 
     @Inject
     LoginActivityMVP.Presenter presenter;
@@ -35,7 +40,14 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        ((App) getApplication()).getComponent().inject(this);
+
+    }
+    @Override
+    protected void injectMembers(HasActivitySubcomponentBuilders hasActivitySubcomponentBuilders) {
+        ((LoginActivityComponent.Builder) hasActivitySubcomponentBuilders.getActivityComponentBuilder(LoginActivity.class))
+                .activityModule(new LoginActivityComponent.LoginActivityModule(this))
+                .build()
+                .injectMembers(this);
     }
 
 
@@ -94,5 +106,11 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     public void setLastName(String lastName)
     {
         eLastName.setText(lastName);
+    }
+
+    @Override
+    public Context getCurrentContext()
+    {
+        return this;
     }
 }
